@@ -1,0 +1,243 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.new-campaign {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+
+  &__head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: $space-4;
+    padding-top: $space-4;
+  }
+
+  &__title {
+    @include display($text-2xl);
+
+    @include up($bp-md) {
+      font-size: 3.6rem;
+    }
+  }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: $space-5;
+
+    @include up($bp-lg) {
+      grid-template-columns: 220px minmax(0, 1fr);
+      align-items: start;
+      gap: $space-6;
+    }
+  }
+
+  &__steps {
+    @include up($bp-lg) {
+      position: sticky;
+      top: $space-5;
+    }
+  }
+
+  &__form {
+    @include panel;
+    display: flex;
+    flex-direction: column;
+    gap: $space-5;
+    padding: $space-5 $space-4;
+    min-width: 0;
+
+    @include up($bp-md) {
+      padding: $space-6;
+    }
+  }
+
+  &__step-title {
+    font-size: $text-xl;
+    font-weight: 740;
+    font-stretch: 118%;
+    letter-spacing: -0.01em;
+    border-radius: 4px;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+  }
+
+  &__step-intro {
+    margin-top: $space-1;
+    color: var(--ink-2);
+  }
+
+  &__summary {
+    padding: $space-3 $space-4;
+    border-left: 3px solid var(--danger);
+    border-radius: $radius-sm;
+    background: var(--danger-soft);
+    color: var(--danger);
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: $space-5;
+    max-width: 760px;
+  }
+
+  &__row {
+    display: grid;
+    gap: $space-4;
+
+    @include up($bp-md) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: $space-6;
+
+    @include up($bp-lg) {
+      grid-template-columns: minmax(0, 1fr) 320px;
+    }
+  }
+
+  &__fields,
+  &__generator,
+  &__copy {
+    display: flex;
+    flex-direction: column;
+    gap: $space-4;
+  }
+
+  &__fields {
+    gap: $space-6;
+  }
+
+  &__generator {
+    padding: $space-4;
+    background: var(--surface-sunk);
+    border: 1px solid var(--hairline);
+    border-radius: $radius-md;
+  }
+
+  &__preview {
+    @include up($bp-lg) {
+      position: sticky;
+      top: $space-5;
+      align-self: start;
+    }
+  }
+
+  &__subhead {
+    font-size: $text-lg;
+    font-weight: 700;
+    font-stretch: 112%;
+  }
+
+  &__source {
+    font-size: $text-sm;
+    color: var(--ink-2);
+  }
+
+  &__inline-error {
+    font-size: $text-sm;
+    color: var(--danger);
+  }
+
+  &__variants {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+  }
+
+  &__variant-list {
+    display: flex;
+    flex-direction: column;
+    gap: $space-2;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    gap: $space-3;
+    padding-top: $space-4;
+    border-top: 1px solid var(--hairline);
+  }
+}
+
+.variant {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+  padding: $space-3 $space-4;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  border-radius: $radius-sm;
+
+  &--chosen {
+    border-color: var(--accent);
+    box-shadow: inset 0 0 0 1px var(--accent);
+  }
+
+  &__headline {
+    font-weight: 700;
+  }
+
+  &__body {
+    font-size: $text-sm;
+    color: var(--ink-2);
+  }
+
+  &__foot {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-2;
+    margin-top: $space-1;
+  }
+
+  &__cta {
+    font-size: $text-xs;
+    color: var(--ink-muted);
+  }
+}
+
+.review {
+  margin: $space-3 0 0;
+  border-top: 1px solid var(--hairline);
+
+  &__row {
+    display: grid;
+    grid-template-columns: 110px 1fr auto;
+    align-items: center;
+    gap: $space-3;
+    padding: $space-2 0;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  &__label {
+    font-size: $text-sm;
+    color: var(--ink-muted);
+  }
+
+  &__value {
+    margin: 0;
+    overflow-wrap: anywhere;
+  }
+
+  &__edit {
+    margin: 0;
+  }
+}

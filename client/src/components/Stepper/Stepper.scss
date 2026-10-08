@@ -1,0 +1,95 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.stepper {
+  &__list {
+    position: relative;
+    display: flex;
+    gap: $space-1;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    overflow-x: auto;
+
+    @include up($bp-lg) {
+      flex-direction: column;
+      gap: 0;
+      border-left: 1px solid var(--hairline);
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    gap: $space-3;
+    width: 100%;
+    padding: $space-2 $space-3;
+    border: 0;
+    background: none;
+    text-align: left;
+    border-radius: $radius-sm;
+    white-space: nowrap;
+    cursor: pointer;
+
+    &:disabled {
+      cursor: default;
+    }
+
+    @include up($bp-lg) {
+      padding: $space-3 $space-4;
+      margin-left: -1px;
+      border-left: 2px solid transparent;
+      border-radius: 0;
+    }
+  }
+
+  &__item--done &__button:hover {
+    background: var(--surface-sunk);
+  }
+
+  &__index {
+    display: inline-grid;
+    place-items: center;
+    flex: none;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--axis);
+    border-radius: 50%;
+    font-size: $text-sm;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink-muted);
+  }
+
+  &__name {
+    font-size: $text-sm;
+    font-weight: 560;
+    color: var(--ink-muted);
+  }
+
+  &__item--current &__index {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: var(--accent-ink);
+  }
+
+  &__item--current &__name {
+    color: var(--ink);
+    font-weight: 700;
+  }
+
+  &__item--current &__button {
+    @include up($bp-lg) {
+      border-left-color: var(--accent);
+    }
+  }
+
+  &__item--done &__index {
+    border-color: var(--ink-2);
+    color: var(--ink);
+  }
+
+  &__item--done &__name {
+    color: var(--ink-2);
+  }
+}

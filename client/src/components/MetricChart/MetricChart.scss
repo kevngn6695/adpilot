@@ -1,0 +1,208 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.metric-chart {
+  margin: 0;
+  min-width: 0;
+  max-width: 100%;
+  transition: opacity 150ms ease;
+
+  &--dimmed {
+    opacity: 0.55;
+  }
+
+  &__legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-2 $space-5;
+    margin: 0 0 $space-3;
+    padding: 0;
+    list-style: none;
+    font-size: $text-sm;
+    color: var(--ink-2);
+  }
+
+  &__legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+  }
+
+  // Legend keys mirror the mark: a short line, not a box.
+  &__key {
+    width: 16px;
+    height: 2px;
+    border-radius: 1px;
+
+    @for $i from 1 through 4 {
+      &--s#{$i} {
+        background: var(--series-#{$i});
+      }
+    }
+  }
+
+  &__frame {
+    width: 100%;
+    min-height: 300px;
+  }
+
+  &__svg {
+    display: block;
+    overflow: visible;
+    border-radius: $radius-sm;
+
+    &:focus-visible {
+      @include focus-ring;
+    }
+  }
+
+  &__grid {
+    stroke: var(--hairline);
+    stroke-width: 1;
+  }
+
+  &__baseline {
+    stroke: var(--axis);
+    stroke-width: 1;
+  }
+
+  &__tick {
+    fill: var(--ink-muted);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__line {
+    fill: none;
+    stroke-width: 2;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+
+    @for $i from 1 through 4 {
+      &--s#{$i} {
+        stroke: var(--series-#{$i});
+      }
+    }
+  }
+
+  &__leader {
+    fill: none;
+    stroke: var(--axis);
+    stroke-width: 1;
+  }
+
+  &__direct-label {
+    fill: var(--ink-2);
+    font-size: 12px;
+    font-weight: 560;
+  }
+
+  &__crosshair {
+    stroke: var(--ink-muted);
+    stroke-width: 1;
+  }
+
+  // 8px dots with a 2px surface ring so overlapping lines stay readable.
+  &__dot {
+    stroke: var(--surface);
+    stroke-width: 2;
+
+    @for $i from 1 through 4 {
+      &--s#{$i} {
+        fill: var(--series-#{$i});
+      }
+    }
+  }
+
+  &__tooltip {
+    fill: var(--surface);
+    stroke: var(--hairline);
+  }
+
+  &__tooltip-title {
+    fill: var(--ink-2);
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__tooltip-key {
+    stroke-width: 2;
+    stroke-linecap: round;
+  }
+
+  &__tooltip-value {
+    fill: var(--ink);
+    font-size: 13px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__tooltip-name {
+    fill: var(--ink-muted);
+    font-size: 12px;
+  }
+
+  &__hit {
+    fill: transparent;
+    cursor: crosshair;
+    touch-action: pan-y;
+  }
+
+  &__table-toggle {
+    max-width: 100%;
+    overflow: hidden;
+    margin-top: $space-3;
+    font-size: $text-sm;
+
+    summary {
+      cursor: pointer;
+      color: var(--ink-2);
+      width: fit-content;
+      border-radius: 4px;
+
+      &:hover {
+        color: var(--ink);
+      }
+    }
+  }
+
+  &__table-scroll {
+    position: relative;
+    max-height: 320px;
+    overflow: auto;
+    margin-top: $space-2;
+    border: 1px solid var(--hairline);
+    border-radius: $radius-sm;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-variant-numeric: tabular-nums;
+
+    th,
+    td {
+      padding: $space-2 $space-3;
+      text-align: right;
+      white-space: nowrap;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    th:first-child {
+      text-align: left;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      background: var(--surface-sunk);
+      font-weight: 600;
+      color: var(--ink-2);
+    }
+
+    tbody th {
+      font-weight: 500;
+      color: var(--ink-2);
+    }
+  }
+}

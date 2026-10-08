@@ -1,0 +1,105 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: $space-5;
+
+  &__head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: $space-4;
+    padding-top: $space-4;
+  }
+
+  &__title {
+    @include display($text-2xl);
+
+    @include up($bp-md) {
+      font-size: 3.6rem;
+    }
+  }
+
+  &__subtitle {
+    margin-top: $space-2;
+    color: var(--ink-2);
+  }
+
+  &__notice,
+  &__error {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-3;
+    padding: $space-3 $space-4;
+    border-radius: $radius-sm;
+  }
+
+  &__notice {
+    background: var(--accent-soft);
+    border-left: 3px solid var(--accent);
+  }
+
+  &__error {
+    background: var(--danger-soft);
+    border-left: 3px solid var(--danger);
+    color: var(--danger);
+  }
+
+  &__loading {
+    color: var(--ink-2);
+  }
+
+  &__empty {
+    @include panel;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: $space-3;
+    padding: $space-6;
+  }
+
+  &__empty-title {
+    font-size: $text-xl;
+    font-weight: 700;
+    font-stretch: 112%;
+  }
+
+  &__filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $space-4;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: $space-3;
+    margin-top: $space-4;
+  }
+
+  &__section-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: $space-3;
+    margin-bottom: $space-2;
+  }
+
+  &__section-title {
+    font-size: $text-xl;
+    font-weight: 720;
+    font-stretch: 115%;
+    letter-spacing: -0.01em;
+  }
+
+  &__section-note {
+    margin-top: $space-1;
+    font-size: $text-sm;
+    color: var(--ink-muted);
+  }
+}

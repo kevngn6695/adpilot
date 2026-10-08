@@ -1,0 +1,62 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.segmented {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+
+  &__legend {
+    padding: 0;
+    margin-bottom: $space-1;
+    font-size: $text-xs;
+    color: var(--ink-muted);
+  }
+
+  &__track {
+    display: inline-flex;
+    flex-wrap: wrap;
+    padding: 3px;
+    gap: 2px;
+    background: var(--surface-sunk);
+    border: 1px solid var(--hairline);
+    border-radius: $radius-sm;
+  }
+
+  &__option {
+    position: relative;
+  }
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  &__label {
+    display: block;
+    padding: 0.4rem $space-3;
+    border-radius: 4px;
+    font-size: $text-sm;
+    font-weight: 560;
+    color: var(--ink-2);
+    white-space: nowrap;
+  }
+
+  &__input:hover + &__label {
+    color: var(--ink);
+  }
+
+  &__input:checked + &__label {
+    background: var(--surface);
+    color: var(--ink);
+    box-shadow: 0 0 0 1px var(--hairline);
+  }
+
+  &__input:focus-visible + &__label {
+    @include focus-ring;
+  }
+}

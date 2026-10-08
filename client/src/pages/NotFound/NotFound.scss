@@ -1,0 +1,18 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: $space-4;
+  padding-top: $space-7;
+
+  &__title {
+    @include display($text-2xl);
+  }
+
+  &__text {
+    color: var(--ink-2);
+  }
+}

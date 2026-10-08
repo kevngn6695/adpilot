@@ -1,0 +1,55 @@
+// Color tokens as CSS custom properties. Emitted once, from global.scss only.
+
+// Light: sage-tinted "chart paper", deep green-slate ink, and the magenta used on
+// aviation sectional charts as the one accent (primary actions, focus, active states).
+:root {
+  color-scheme: light;
+  --page: #eef1ec;
+  --surface: #fbfcfa;
+  --surface-sunk: #f3f5f1;
+  --ink: #17201c;
+  --ink-2: #4e5a54;
+  --ink-muted: #6f7a73;
+  --hairline: #d9ded7;
+  --axis: #b9c1ba;
+  --accent: #a3127a;
+  --accent-ink: #ffffff;
+  --accent-soft: #f6e3ef;
+  --good: #1d6b2f;
+  --danger: #b42318;
+  --danger-soft: #fdecea;
+
+  // Chart series, validated as a set (CVD + contrast) for this surface.
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-3: #1baf7a;
+  --series-4: #eda100;
+}
+
+@mixin dark-tokens {
+  color-scheme: dark;
+  --page: #111513;
+  --surface: #1a1e1c;
+  --surface-sunk: #151917;
+  --ink: #eef2ee;
+  --ink-2: #b8c2bb;
+  --ink-muted: #8b968f;
+  --hairline: #2c332f;
+  --axis: #3c4540;
+  --accent: #e05ab4;
+  --accent-ink: #1a0614;
+  --accent-soft: #3a1630;
+  --good: #4cc26a;
+  --danger: #f97066;
+  --danger-soft: #3d1714;
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-4: #c98500;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    @include dark-tokens;
+  }
+}

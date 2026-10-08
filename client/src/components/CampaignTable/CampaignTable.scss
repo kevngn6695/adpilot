@@ -1,0 +1,157 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.campaign-table {
+  @include panel;
+  overflow: hidden;
+  transition: opacity 150ms ease;
+
+  &--dimmed {
+    opacity: 0.55;
+  }
+
+  // position: relative keeps absolutely positioned (visually hidden) text inside the scroll box.
+  &__scroll {
+    position: relative;
+    overflow-x: auto;
+  }
+
+  &__table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: $text-sm;
+  }
+
+  &__th {
+    padding: $space-3;
+    text-align: left;
+    font-weight: 600;
+    color: var(--ink-2);
+    background: var(--surface-sunk);
+    border-bottom: 1px solid var(--hairline);
+    white-space: nowrap;
+
+    &--num {
+      text-align: right;
+    }
+  }
+
+  &__sort {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-1;
+    padding: 0;
+    border: 0;
+    background: none;
+    font-weight: inherit;
+    color: inherit;
+    cursor: pointer;
+    border-radius: 3px;
+
+    &:hover {
+      color: var(--ink);
+    }
+  }
+
+  &__sort-icon {
+    display: inline-block;
+    width: 0.8em;
+    font-size: 0.65em;
+  }
+
+  &__row {
+    td,
+    th {
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    &:last-child td,
+    &:last-child th {
+      border-bottom: 0;
+    }
+
+    &:hover {
+      background: var(--surface-sunk);
+    }
+  }
+
+  // Campaign name stays pinned while the numbers scroll on small screens.
+  &__name {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    min-width: 190px;
+    padding: $space-3;
+    text-align: left;
+    font-weight: 400;
+    background: inherit;
+    background-color: var(--surface);
+  }
+
+  &__row:hover &__name {
+    background-color: var(--surface-sunk);
+  }
+
+  &__title {
+    display: block;
+    font-weight: 620;
+    color: var(--ink);
+  }
+
+  &__objective {
+    display: block;
+    font-size: $text-xs;
+    color: var(--ink-muted);
+  }
+
+  &__status {
+    padding: $space-3;
+    white-space: nowrap;
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 560;
+
+    &--active {
+      color: var(--good);
+    }
+
+    &--paused {
+      color: var(--ink-muted);
+    }
+  }
+
+  &__badge-icon {
+    width: 10px;
+    height: 10px;
+
+    circle {
+      fill: currentColor;
+    }
+
+    path {
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+  }
+
+  &__num {
+    padding: $space-3;
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  &__actions {
+    padding: $space-2 $space-3;
+    white-space: nowrap;
+    text-align: right;
+
+    .button + .button {
+      margin-left: $space-1;
+    }
+  }
+}

@@ -1,0 +1,123 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  &__skip {
+    @include visually-hidden;
+
+    &:focus {
+      position: fixed;
+      top: $space-2;
+      left: $space-2;
+      width: auto;
+      height: auto;
+      margin: 0;
+      clip: auto;
+      padding: $space-2 $space-3;
+      background: var(--surface);
+      border-radius: $radius-sm;
+      z-index: 10;
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-4;
+    width: 100%;
+    max-width: $content-max;
+    margin: 0 auto;
+    padding: $space-4;
+
+    @include up($bp-md) {
+      padding: $space-5 $space-6;
+    }
+  }
+
+  &__brand {
+    display: inline-flex;
+    align-items: center;
+    gap: $space-2;
+    text-decoration: none;
+    border-radius: $radius-sm;
+  }
+
+  &__mark {
+    width: 28px;
+    height: 28px;
+
+    rect {
+      fill: var(--accent);
+    }
+
+    path {
+      fill: none;
+      stroke: var(--accent-ink);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  }
+
+  &__wordmark {
+    font-size: $text-lg;
+    font-weight: 800;
+    font-stretch: 125%;
+    letter-spacing: -0.02em;
+  }
+
+  &__nav {
+    display: flex;
+    gap: $space-1;
+  }
+
+  &__link {
+    padding: $space-2 $space-3;
+    border-radius: $radius-sm;
+    font-size: $text-sm;
+    font-weight: 560;
+    color: var(--ink-2);
+    text-decoration: none;
+
+    &:hover {
+      color: var(--ink);
+      background: var(--surface-sunk);
+    }
+
+    &.active {
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+  }
+
+  &__main {
+    flex: 1;
+    width: 100%;
+    max-width: $content-max;
+    margin: 0 auto;
+    padding: $space-2 $space-4 $space-7;
+
+    @include up($bp-md) {
+      padding: $space-4 $space-6 $space-8;
+    }
+  }
+
+  &__footer {
+    max-width: $content-max;
+    width: 100%;
+    margin: 0 auto;
+    padding: $space-5 $space-4;
+    font-size: $text-xs;
+    color: var(--ink-muted);
+    border-top: 1px solid var(--hairline);
+
+    @include up($bp-md) {
+      padding: $space-5 $space-6;
+    }
+  }
+}

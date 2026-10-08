@@ -1,0 +1,101 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.ad-preview {
+  margin: 0;
+
+  &__card {
+    @include panel;
+    overflow: hidden;
+    max-width: 380px;
+  }
+
+  &__head {
+    display: flex;
+    align-items: center;
+    gap: $space-2;
+    padding: $space-3;
+  }
+
+  &__avatar {
+    display: grid;
+    place-items: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--ink);
+    color: var(--surface);
+    font-weight: 800;
+    font-stretch: 120%;
+  }
+
+  &__who {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+  }
+
+  &__name {
+    font-weight: 650;
+    font-size: $text-sm;
+  }
+
+  &__sponsored {
+    font-size: $text-xs;
+    color: var(--ink-muted);
+  }
+
+  &__body {
+    padding: 0 $space-3 $space-3;
+    font-size: $text-sm;
+    overflow-wrap: anywhere;
+  }
+
+  // A plain block stands in for the ad image; the product name in wide type marks it.
+  &__media {
+    display: grid;
+    place-items: end start;
+    aspect-ratio: 1.2;
+    padding: $space-4;
+    background: var(--surface-sunk);
+    border-top: 1px solid var(--hairline);
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  &__media-text {
+    @include display($text-xl);
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    color: var(--ink-2);
+  }
+
+  &__foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $space-3;
+    padding: $space-3;
+  }
+
+  &__headline {
+    font-weight: 700;
+    font-size: $text-sm;
+    overflow-wrap: anywhere;
+  }
+
+  &__cta {
+    flex: none;
+    padding: $space-2 $space-3;
+    border-radius: $radius-sm;
+    background: var(--ink);
+    color: var(--surface);
+    font-size: $text-sm;
+    font-weight: 650;
+  }
+
+  &__caption {
+    margin-top: $space-2;
+    font-size: $text-xs;
+    color: var(--ink-muted);
+  }
+}

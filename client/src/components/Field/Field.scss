@@ -1,0 +1,70 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: $space-1;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: $space-2;
+  }
+
+  &__label {
+    font-weight: 600;
+    font-size: $text-sm;
+  }
+
+  &__count {
+    font-size: $text-xs;
+    color: var(--ink-muted);
+    font-variant-numeric: tabular-nums;
+
+    &--over {
+      color: var(--danger);
+      font-weight: 600;
+    }
+  }
+
+  &__hint {
+    font-size: $text-sm;
+    color: var(--ink-muted);
+  }
+
+  &__control {
+    width: 100%;
+    min-height: 44px;
+    padding: $space-2 $space-3;
+    background: var(--surface);
+    border: 1px solid var(--axis);
+    border-radius: $radius-sm;
+
+    &:hover {
+      border-color: var(--ink-muted);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 0;
+      border-color: var(--accent);
+    }
+
+    &--area {
+      min-height: 96px;
+      resize: vertical;
+      line-height: 1.45;
+    }
+  }
+
+  &--invalid &__control {
+    border-color: var(--danger);
+  }
+
+  &__error {
+    font-size: $text-sm;
+    color: var(--danger);
+  }
+}

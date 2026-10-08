@@ -1,0 +1,70 @@
+@use '../../styles/tokens' as *;
+@use '../../styles/mixins' as *;
+
+.kpi-strip {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 0;
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--hairline);
+  transition: opacity 150ms ease;
+
+  @include up($bp-lg) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  &--dimmed {
+    opacity: 0.55;
+  }
+
+  &__item {
+    padding: $space-4 $space-4 $space-4 0;
+
+    &:nth-child(2n) {
+      padding-left: $space-4;
+      border-left: 1px solid var(--hairline);
+    }
+
+    &:nth-child(n + 3) {
+      border-top: 1px solid var(--hairline);
+    }
+
+    @include up($bp-lg) {
+      &:nth-child(n) {
+        padding-left: $space-5;
+        border-top: 0;
+      }
+
+      &:not(:first-child) {
+        border-left: 1px solid var(--hairline);
+      }
+
+      &:first-child {
+        padding-left: 0;
+      }
+    }
+  }
+
+  &__label {
+    font-size: $text-sm;
+    color: var(--ink-2);
+  }
+
+  &__value {
+    margin: $space-1 0 0;
+    font-size: $text-xl;
+    font-weight: 720;
+    font-stretch: 112%;
+    line-height: 1.15;
+
+    @include up($bp-md) {
+      font-size: 1.9rem;
+    }
+  }
+
+  &__detail {
+    margin: $space-1 0 0;
+    font-size: $text-sm;
+    color: var(--ink-muted);
+  }
+}
